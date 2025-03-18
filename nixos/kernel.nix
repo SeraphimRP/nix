@@ -14,7 +14,7 @@
         "security=selinux"
     ];
 
-    systemd.package = pkgs.systemd.override { withSeLinux = true; };
+    systemd.package = pkgs.systemd.override { withSelinux = true; };
 
     environment.systemPackages = with pkgs; [
         policycoreutils

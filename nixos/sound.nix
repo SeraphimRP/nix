@@ -2,10 +2,10 @@
 
 {
     services.pulseaudio.enable = false;
-    services.rtkit.enable = true; # realtime audio support
+    security.rtkit.enable = true; # realtime audio support
     services.pipewire = {
         enable = true;
-        alsa = { enable = true; support32Bit = true; }
+        alsa = { enable = true; support32Bit = true; };
         pulse.enable = true;
         wireplumber.enable = true;
     };

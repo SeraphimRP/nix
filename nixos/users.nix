@@ -1,15 +1,14 @@
-imports = [ <home-manager/nixos> ];
-
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
+    programs.zsh.enable = true;
+
     users.users.srp = {
         isNormalUser = true;
+        shell = pkgs.zsh;
         description = "Seraphim R. Pardee";
         extraGroups = [ "input" "wheel" "video" "audio" "tss" ];
     };
-
-    home-manager.useGlobalPkgs = true;
 
     services.logind.extraConfig = "RuntimeDirectorySize=8G";
 }

@@ -27,5 +27,6 @@
         rsclock
         cava
         figlet
+        nnn
     ];
 }

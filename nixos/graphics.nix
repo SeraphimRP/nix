@@ -16,5 +16,5 @@
     boot.kernelParams = [
         "video=DP-2:2560x1440@144"
         "video=HDMI-A-2:2560x1440@60"
-    ]
+    ];
 }

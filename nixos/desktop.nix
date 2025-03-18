@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
     services.greetd = {
         enable = true;
         settings = {
             default_session = {
-                command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland"
+                command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
                 user = "greeter";
             };
         };
@@ -15,11 +15,6 @@
         enable = true;
         withUWSM = true;
         xwayland.enable = true;
-    };
-    wayland.windowManager.hyprland = {
-        plugins = [
-            hyprland-split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
-        ];
     };
     environment.sessionVariables = {
         NIXOS_OZONE_WL = "1";

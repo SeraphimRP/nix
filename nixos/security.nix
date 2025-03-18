@@ -25,7 +25,6 @@
   
     security.pam.services.hyprlock = {};
     # security.polkit.enable = true;
-    programs.bitwarden.enable = true;
     
     services.clamav = {
         daemon.enable = true;
@@ -71,5 +70,6 @@
         vulnix       # scan command: vulnix --system
         clamav       # scan command: sudo freshclam; clamscan [options] [file/directory/-]
         chkrootkit   # scan command: sudo chkrootkit
+	bitwarden-desktop
     ];
 }

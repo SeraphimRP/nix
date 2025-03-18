@@ -9,8 +9,10 @@
     networking.hostName = "nixos";
     networking.wireless = {
         enable = true;
-        userControlled.enable = true;
-        networks.SSID_HERE.pskRaw = "PSK_HERE";
+        networks.SSID_HERE = {
+            authProtocols = [ "WPA-PSK" ];
+            pskRaw = "PSK_HERE";
+        };
     };
 
     networking.firewall.enable = true;

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
     # Home Manager needs a bit of information about you and the
@@ -9,7 +9,6 @@
     programs.zsh = {
         enable = true;
         enableCompletion = true;
-        autosuggestions.enable = true;
         syntaxHighlighting.enable = true;
 
         shellAliases = {
@@ -25,6 +24,12 @@
         userEmail = "me@srp.life";
         userName = "Seraphim R. Pardee";
         extraConfig = { credential.helper = "store"; };
+    };
+
+    wayland.windowManager.hyprland = {
+        plugins = [
+            inputs.hyprland-split-monitor-workspaces.plugins.${pkgs.system}.split-monitor-workspaces  
+        ];
     };
 
     # This value determines the Home Manager release that your
