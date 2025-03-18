@@ -1,0 +1,41 @@
+{ pkgs, ... }:
+
+{
+    systemd.packages = with pkgs; [
+        auto-cpufreq
+    ];
+
+    programs.dconf.enable = true;
+
+    services.dbus = {
+        enable = true;
+        implementation = "broker";
+    };
+
+    services.fwupd.enable = true;
+    services.auto-cpufreq.enable = true;
+
+    environment.systemPackages = with pkgs; [
+        at-spi2-atk
+        qt6.qtwayland
+        psi-notify
+        playerctl
+        psmisc
+        grim
+        slurp
+        imagemagick
+        swappy
+        ffmpeg_6-full
+        wl-screenrec
+        wl-clipboard
+        wl-clip-persist
+        xdg-utils
+        wtype
+        wlrctl
+        waybar
+        rofi-wayland
+        dunst
+        wlogout
+        gifsicle
+    ];
+}
