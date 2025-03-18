@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+    services.envfs.enable = true;
+
     environment.systemPackages = with pkgs; [
         kitty
         starship
@@ -15,7 +17,6 @@
         curl
         ripgrep
         eza
-        neovim
         fd
         jq
         fzf

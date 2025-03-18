@@ -1,6 +1,10 @@
-{ config, inputs, pkgs, ... }:
+{ config, inputs, pkgs, nix-colors, nixvim, ... }:
 
 {
+    imports = [ nix-colors.homeManagerModules.default nixvim.homeManagerModules.nixvim ];
+
+    colorScheme = nix-colors.colorSchemes.nord;
+
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
     home.username = "srp";
@@ -19,6 +23,12 @@
         };
     };
 
+    programs.nixvim = {
+    	enable = true;
+        plugins.lualine.enable = true;
+        #colorschemes.nord.enable = true;
+    };
+
     programs.git = {
         enable = true;
         userEmail = "me@srp.life";
@@ -26,9 +36,17 @@
         extraConfig = { credential.helper = "store"; };
     };
 
+    programs.kitty.settings = {
+        foreground = "#${config.colorScheme.palette.base05}";
+        background = "#${config.colorScheme.palette.base00}";
+    };
+
     wayland.windowManager.hyprland = {
+        enable = true;
+        package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+        extraConfig = ''${builtins.readFile ./hyprland.conf}'';
         plugins = [
-            inputs.hyprland-split-monitor-workspaces.plugins.${pkgs.system}.split-monitor-workspaces  
+            inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
         ];
     };
 

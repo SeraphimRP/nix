@@ -70,6 +70,6 @@
         vulnix       # scan command: vulnix --system
         clamav       # scan command: sudo freshclam; clamscan [options] [file/directory/-]
         chkrootkit   # scan command: sudo chkrootkit
-	bitwarden-desktop
+    	bitwarden-desktop
     ];
 }
