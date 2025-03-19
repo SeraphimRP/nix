@@ -1,7 +1,7 @@
-{ config, inputs, pkgs, nix-colors, ... }:
+{ config, inputs, pkgs, nix-colors, nixvim, ... }:
 
 {
-    imports = [ nix-colors.homeManagerModules.default inputs.nixvim.homeManagerModules.nixvim ];
+    imports = [ nix-colors.homeManagerModules.default nixvim.homeManagerModules.nixvim ];
 
     colorScheme = nix-colors.colorSchemes.nord;
 
@@ -27,14 +27,10 @@
     };
 
     programs.nixvim = {
-    	enable = true;
-        
-        extraPlugins = with pkgs.vimPlugins; [
-            nordic-nvim
-            lualine-nvim
-        ];
+        enable = true;
 
-        colorscheme = "nordic";
+        plugins.lualine.enable = true;
+        colorschemes.nord.enable = true;
     };
 
     programs.git = {

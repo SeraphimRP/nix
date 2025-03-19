@@ -9,14 +9,16 @@
         hyprsplit = { url = "github:shezdy/hyprsplit"; inputs.hyprland.follows = "hyprland"; };
 
         nix-colors.url = "github:misterio77/nix-colors";
-	nixvim = { url = "github:nix-community/nixvim"; inputs.nixpkgs.follows = "nixpkgs"; };
+	    nixvim = { url = "github:nix-community/nixvim"; inputs.nixpkgs.follows = "nixpkgs"; };
+
+        mcmojave-hyprcursor.url = "github:libadoxon/mcmojave-hyprcursor";
 
         home-manager = { url = "github:nix-community/home-manager"; inputs.nixpkgs.follows = "nixpkgs"; };
     };
 
-    outputs = { nixpkgs, home-manager, hyprland, nix-colors, nixvim, ... } @ inputs: {
+    outputs = { nixpkgs, home-manager, nix-colors, nixvim, ... } @ inputs: {
         nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit inputs; };
+            specialArgs = { inherit inputs nixvim; };
             modules = [
                 ./configuration.nix
                 ./hardware-configuration.nix
@@ -49,7 +51,9 @@
         homeConfigurations."srp@nixos" = home-manager.lib.homeManagerConfiguration {
             pkgs = nixpkgs.legacyPackages.x86_64-linux;
             extraSpecialArgs = { inherit inputs nix-colors nixvim; };
-            modules = [ ./home.nix ];
+            modules = [
+                ./home.nix
+            ];
         };
     };
 }
