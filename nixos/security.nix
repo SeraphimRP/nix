@@ -2,10 +2,10 @@
 
 {
     programs.mtr.enable = true;
-    programs.gnupg.agent = {
-        enable = true;
-        enableSSHSupport = true;
-    };
+    services.gnome.gnome-keyring.enable = true;
+    security.pam.services.greetd.enableGnomeKeyring = true;
+    security.pam.services.tuigreet.enableGnomeKeyring = true;
+
 
     users.users.root.hashedPassword = "!";
     
@@ -24,7 +24,7 @@
     };
   
     security.pam.services.hyprlock = {};
-    # security.polkit.enable = true;
+    security.polkit.enable = true;
     
     services.clamav = {
         daemon.enable = true;
@@ -47,22 +47,18 @@
                 executable = "${lib.getBin pkgs.zathura}/bin/zathura";
                 profile = "${pkgs.firejail}/etc/firejail/zathura.profile";
             };
-            discord = {
-                executable = "${lib.getBin pkgs.discord}/bin/discord";
-                profile = "${pkgs.firejail}/etc/firejail/discord.profile";
-            };
-            telegram-desktop = {
-                executable = "${lib.getBin pkgs.tdesktop}/bin/telegram-desktop";
-                profile = "${pkgs.firejail}/etc/firejail/telegram-desktop.profile";
-            };
-            brave = {
-                executable = "${lib.getBin pkgs.brave}/bin/brave";
-                profile = "${pkgs.firejail}/etc/firejail/brave.profile";
-            };
-            vscode = {
-                executable = "${lib.getBin pkgs.vscode}/bin/code";
-                profile = "${pkgs.firejail}/etc/firejail/vscode.profile";
-            };
+            #discord = {
+            #    executable = "${lib.getBin pkgs.discord}/bin/discord";
+            #    profile = "${pkgs.firejail}/etc/firejail/discord.profile";
+            #};
+            #telegram-desktop = {
+            #    executable = "${lib.getBin pkgs.tdesktop}/bin/telegram-desktop";
+            #    profile = "${pkgs.firejail}/etc/firejail/telegram-desktop.profile";
+            #};
+            #brave = {
+            #    executable = "${lib.getBin pkgs.brave}/bin/brave";
+            #    profile = "${pkgs.firejail}/etc/firejail/brave.profile";
+            #};
         };
     };
 

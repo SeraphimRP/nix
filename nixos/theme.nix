@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
     console = {
@@ -13,4 +13,12 @@
     ];
     
     # lots to do here, compare to https://github.com/XNM1/linux-nixos-hyprland-config-dotfiles/blob/main/nixos/theme.nix
+    environment.systemPackages = with pkgs; [
+        nordic
+        inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
+        glib
+        gsettings-desktop-schemas
+        nwg-look
+        kitty-themes
+    ];
 }

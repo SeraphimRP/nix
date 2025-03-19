@@ -19,6 +19,7 @@
     environment.sessionVariables = {
         NIXOS_OZONE_WL = "1";
         WLR_NO_HARDWARE_CURSORS = "1";
+        AQ_NO_ATOMIC="0";
     };
 
     environment.systemPackages = with pkgs; [
@@ -30,6 +31,9 @@
         hyprlock
         hypridle
         hyprpaper
+        hyprpolkitagent
+
+        xdg-desktop-portal-gtk
         
         brave
         zathura

@@ -1,7 +1,7 @@
-{ config, inputs, pkgs, nix-colors, nixvim, ... }:
+{ config, inputs, pkgs, nix-colors, ... }:
 
 {
-    imports = [ nix-colors.homeManagerModules.default nixvim.homeManagerModules.nixvim ];
+    imports = [ nix-colors.homeManagerModules.default inputs.nixvim.homeManagerModules.nixvim ];
 
     colorScheme = nix-colors.colorSchemes.nord;
 
@@ -14,6 +14,9 @@
         enable = true;
         enableCompletion = true;
         syntaxHighlighting.enable = true;
+        initExtra = ''
+            eval "$(starship init zsh)"
+        '';
 
         shellAliases = {
             vim = "nvim";
@@ -25,8 +28,13 @@
 
     programs.nixvim = {
     	enable = true;
-        plugins.lualine.enable = true;
-        #colorschemes.nord.enable = true;
+        
+        extraPlugins = with pkgs.vimPlugins; [
+            nordic-nvim
+            lualine-nvim
+        ];
+
+        colorscheme = "nordic";
     };
 
     programs.git = {
@@ -36,14 +44,34 @@
         extraConfig = { credential.helper = "store"; };
     };
 
-    programs.kitty.settings = {
-        foreground = "#${config.colorScheme.palette.base05}";
-        background = "#${config.colorScheme.palette.base00}";
+    home.sessionVariables = {
+        EDITOR="nvim";
+        XDG_CACHE_HOME="$HOME/.cache";
+        XDG_CONFIG_HOME="$HOME/.config";
+        XDG_DATA_HOME="$HOME/.local/share";
+        XDG_BIN_HOME="$HOME/.local/bin";
+        XDG_MUSIC_DIR="$HOME/music";
+        XDG_DESKTOP_DIR="$HOME";
+        XDG_DOCUMENTS_DIR="$HOME/doc";
+        XDG_DOWNLOAD_DIR="$HOME/dl";
+        XDG_PICTURES_DIR="$HOME/img";
+        XDG_PUBLICSHARE_DIR="$HOME/pub";
+        XDG_TEMPLATES_DIR="$HOME/tmpl";
+        XDG_VIDEOS_DIR="$HOME/vid";
     };
+
+    programs.kitty = with pkgs; {
+        enable = true;
+        font.name = "JetBrains Mono";
+        themeFile = "Nord";
+    };
+
+    programs.starship.enable = true;
 
     wayland.windowManager.hyprland = {
         enable = true;
         package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+        portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
         extraConfig = ''${builtins.readFile ./hyprland.conf}'';
         plugins = [
             inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
