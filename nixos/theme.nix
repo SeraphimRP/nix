@@ -10,6 +10,8 @@
         jetbrains-mono
         nerd-font-patcher
         noto-fonts-color-emoji
+        lora
+        noto-fonts
     ];
     
     # lots to do here, compare to https://github.com/XNM1/linux-nixos-hyprland-config-dotfiles/blob/main/nixos/theme.nix

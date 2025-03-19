@@ -19,6 +19,7 @@
         openrgb-with-all-plugins
         i2c-tools
         solaar
-	ntfs3g
+	    ntfs3g
+        udiskie
     ];
 }

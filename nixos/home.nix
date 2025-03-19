@@ -64,6 +64,24 @@
 
     programs.starship.enable = true;
 
+    services.udiskie = {
+        enable = true;
+        automount = true;
+        notify = true;
+        settings.device_config = [
+            {
+                id_uuid = "EA3850B038507D8F";
+                ignore = false;
+                automount = true;
+            }
+            {
+                id_uuid = "72CC3D9BCC3D5B15";
+                ignore = false;
+                automount = true;
+            }
+        ];
+    };
+
     wayland.windowManager.hyprland = {
         enable = true;
         package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
