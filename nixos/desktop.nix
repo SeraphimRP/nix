@@ -32,6 +32,7 @@
         hypridle
         hyprpaper
         hyprpolkitagent
+        mpvpaper
 
         xdg-desktop-portal-gtk
         
