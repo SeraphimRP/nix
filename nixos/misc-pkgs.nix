@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+    programs.coolercontrol.enable = true;
+
     environment.systemPackages = with pkgs; [
         cmake
         gcc

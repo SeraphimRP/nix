@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
     systemd.packages = with pkgs; [
@@ -13,6 +13,7 @@
     };
 
     services.fwupd.enable = true;
+    services.fwupd.daemonSettings.espLocation = lib.mkForce "/boot";
     services.auto-cpufreq.enable = true;
 
     environment.systemPackages = with pkgs; [

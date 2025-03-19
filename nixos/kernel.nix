@@ -7,7 +7,7 @@
         "quiet"
         "fbcon=nodefer"
         "vt.global_cursor_default=0"
-        "lsm=landlock,lockdown,yama,integrity,apparmor,bpf,tomoyo,selinux"
+        "lsm=apparmor,tomoyo,selinux"
         "video4linux"
         "acpi_rev_override=5"
         "security=selinux"

@@ -26,6 +26,8 @@
         };
     };
 
+    # note: nixvim needs to be enabled in the NixOS
+    # configs *before* it can be enabled here
     programs.nixvim = {
         enable = true;
 

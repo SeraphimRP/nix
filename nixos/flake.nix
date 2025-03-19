@@ -12,13 +12,14 @@
 	    nixvim = { url = "github:nix-community/nixvim"; inputs.nixpkgs.follows = "nixpkgs"; };
 
         mcmojave-hyprcursor.url = "github:libadoxon/mcmojave-hyprcursor";
+        lanzaboote = { url = "github:nix-community/lanzaboote/v0.4.2"; inputs.nixpkgs.follows = "nixpkgs"; };
 
         home-manager = { url = "github:nix-community/home-manager"; inputs.nixpkgs.follows = "nixpkgs"; };
     };
 
-    outputs = { nixpkgs, home-manager, nix-colors, nixvim, ... } @ inputs: {
+    outputs = { nixpkgs, home-manager, nix-colors, nixvim, lanzaboote, ... } @ inputs: {
         nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit inputs nixvim; };
+            specialArgs = { inherit inputs nixvim lanzaboote; };
             modules = [
                 ./configuration.nix
                 ./hardware-configuration.nix

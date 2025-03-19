@@ -6,7 +6,6 @@
     security.pam.services.greetd.enableGnomeKeyring = true;
     security.pam.services.tuigreet.enableGnomeKeyring = true;
 
-
     users.users.root.hashedPassword = "!";
     
     security.tpm2 = {
