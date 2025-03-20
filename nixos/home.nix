@@ -60,7 +60,7 @@
 
     programs.kitty = with pkgs; {
         enable = true;
-        font.name = "JetBrains Mono";
+        font.name = "JetBrainsMono Nerd Font";
         themeFile = "Nord";
     };
 
@@ -100,6 +100,7 @@
                 width = "(0, 700)";
                 height = "(0, 100)";
                 monitor = 1;
+                show_indicators = "no";
             };
 
             urgency_low = {
@@ -122,11 +123,147 @@
         };
     };
 
+    programs.waybar = {
+        enable = true;
+        style = ./config/waybar-style.css;
+        settings = {
+            mainBar = {
+                layer = "top";
+                position = "top";
+                height = 30;
+
+                modules-left = [
+                    "hyprland/workspaces"
+                ];
+                modules-center = [
+                    "clock"
+                ];
+                modules-right = [
+                    "idle_inhibitor"
+                    "network"
+                    "pulseaudio"
+                    "mpris"
+                    "tray"
+                    "custom/power"
+                ];
+
+                "hyprland/workspaces" = {
+                    disable-scroll = true;
+                    all-outputs = false;
+                    warp-on-scroll = false;
+                    format = "{icon}";
+                    format-icons = {
+                        urgent = "";
+                        active = "";
+                        default = "";
+                    };
+                    persistent-workspaces = {
+                        "*" = 6;
+                    };
+                };
+
+                clock = {
+                    format = "{:%A, %B %d  %I:%M %p}";
+                    tooltip = false;
+                };
+
+                idle_inhibitor = {
+                    format = "{icon}";
+                    format-icons = {
+                        activated = "";
+                        deactivated = "";
+                    };
+                };
+
+                network = {
+                    interface = "wlp15s0";
+                    format-wifi = "󰖩";
+                    format-ethernet = "󰈁";
+                    tooltip-format = "{essid} ({signalStrength}%) on {ifname}";
+                    format-disconnected = "󰌙";
+                };
+
+                pulseaudio = {
+                    scroll-step = 1;
+                    format = "{volume}% {icon} {format_source}";
+                    format-bluetooth = "{volume}% {icon} {format_source}";
+                    format-bluetooth-muted = " {icon} {format_source}";
+                    format-muted = " {format_source}";
+                    format-source = "{volume}% ";
+                    format-source-muted = "";
+                    format-icons = {
+                        headphone = "";
+                        hands-free = "";
+                        headset = "";
+                        phone = "";
+                        portable = "";
+                        car = "";
+                        default = ["" "" ""];
+                    };
+                    on-click = "pavucontrol";
+                };
+
+                mpris = {
+                    format-playing = "{player_icon} Playing";
+                    format-paused = "{player_icon} Paused";
+                    format-stopped = "{player_icon}";
+                    interval = 1;
+                    #max-length = 40;
+                    player-icons = {
+                        spotify = "";
+                        Plexamp = "󰚺";
+                        default = "🎜";
+                    };
+                    status-icons = {
+                        "paused" = "⏸";
+                    };
+                    #tooltip-with-markup = true;
+                    #tooltip-format-playing = "<big>{artist}</big>\n{title}\n<small>{album}\n{position}/{length}</small>";
+                    tooltip-format-playing = "{artist}\n\n{title}\n{album}\n\n{position}/{length}";
+                    tooltip-format-paused = "{artist}\n\n{title}\n{album}\n\n{position}/{length}";
+                    player = "Plexamp";
+                    ignored-players = [ "firefox" "brave" ];
+                };
+
+                tray = {
+                    spacing = 5;
+                };
+
+                "custom/power" = {
+                    format = " ⏻ ";
+                    tooltip = false;
+                    menu = "on-click";
+                    menu-file = ./config/waybar-power-menu.xml;
+                    menu-actions = {
+                        shutdown = "poweroff";
+                        reboot = "reboot";
+                        lock = "hyprlock";
+                        suspend =  "systemctl suspend";
+                        hibernate = "systemctl hibernate";
+                    };
+                };
+            };
+        };
+    };
+
+    services.playerctld.enable = true;
+
+    services.hyprpaper = {
+        enable = true;
+        settings = {
+            ipc = "on";
+            splash = false;
+
+            preload = [ "$HOME/img/nixos.png" "$HOME/img/osf-024-static-wallpaper.png" ];
+            wallpaper = [ ", $HOME/img/nixos.png" ];
+        };
+    };
+
     wayland.windowManager.hyprland = {
         enable = true;
         package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
         portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-        extraConfig = ''${builtins.readFile ./hyprland.conf}'';
+        extraConfig = ''${builtins.readFile ./config/hyprland.conf}'';
         plugins = [
             inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
         ];

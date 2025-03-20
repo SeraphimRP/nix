@@ -33,6 +33,7 @@
         hyprpaper
         hyprpolkitagent
         mpvpaper
+        waybar-mpris
 
         xdg-desktop-portal-gtk
         
@@ -43,6 +44,6 @@
         plexamp
         vscode
         equibop
-	cinny-desktop
+	    cinny-desktop
     ];
 }
