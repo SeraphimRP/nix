@@ -43,5 +43,6 @@
         plexamp
         vscode
         equibop
+	cinny-desktop
     ];
 }

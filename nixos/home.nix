@@ -97,7 +97,7 @@
                 notification_limit = 4;
                 gap_size = 7;
                 frame_width = 2;
-                width = 300;
+                width = "(0, 700)";
                 height = "(0, 100)";
                 monitor = 1;
             };
