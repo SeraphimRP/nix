@@ -3,7 +3,7 @@
 {
     environment.systemPackages = with pkgs; [
         go
-        (python313Full.withPackages(ps: with ps; [ pygobject3 gobject-introspection pyqt6-sip ]))
+        (python313Full.withPackages(ps: with ps; [ pygobject3 gobject-introspection pyqt6-sip pip ]))
         nodePackages.nodejs
         typescript
         pnpm

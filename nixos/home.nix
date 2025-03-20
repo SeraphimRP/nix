@@ -84,6 +84,44 @@
         ];
     };
 
+    services.dunst = {
+        enable = true;
+        settings = {
+            global = {
+                frame_color = "#88C0D0";
+                separator_color = "frame";
+                font = "JetBrains Mono Regular 11";
+                corner_radius = 5;
+                offset = "(20, 5)";
+                origin = "top-right";
+                notification_limit = 4;
+                gap_size = 7;
+                frame_width = 2;
+                width = 300;
+                height = "(0, 100)";
+                monitor = 1;
+            };
+
+            urgency_low = {
+                background = "#2E3440";
+                foreground = "#ECEFF4";
+                frame_color = "#81A1C1";
+            };
+
+            urgency_normal = {
+                background = "#2E3440";
+                foreground = "#ECEFF4";
+                frame_color = "#88C0D0";
+            };
+
+            urgency_critical = {
+                background = "#2E3440";
+                foreground = "#ECEFF4";
+                frame_color = "#BF616A";
+            };
+        };
+    };
+
     wayland.windowManager.hyprland = {
         enable = true;
         package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
