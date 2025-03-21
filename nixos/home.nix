@@ -125,7 +125,7 @@
 
     programs.waybar = {
         enable = true;
-        style = ./config/waybar-style.css;
+        style = ./config/waybar/waybar-style.css;
         settings = {
             mainBar = {
                 layer = "top";
@@ -233,7 +233,7 @@
                     format = " ⏻ ";
                     tooltip = false;
                     menu = "on-click";
-                    menu-file = ./config/waybar-power-menu.xml;
+                    menu-file = ./config/waybar/waybar-power-menu.xml;
                     menu-actions = {
                         shutdown = "poweroff";
                         reboot = "reboot";
@@ -252,18 +252,46 @@
         enable = true;
         settings = {
             ipc = "on";
-            splash = false;
+            splash = true;
 
             preload = [ "$HOME/img/nixos.png" "$HOME/img/osf-024-static-wallpaper.png" ];
             wallpaper = [ ", $HOME/img/nixos.png" ];
         };
     };
 
+    programs.hyprlock = {
+        enable = true;
+        extraConfig = ''${builtins.readFile ./config/hypr/hyprlock.conf}'';
+    };
+
+    services.hypridle = {
+        enable = true;
+        settings = {
+            general = {
+                after_sleep_cmd = "hyprctl dispatch dpms on";
+                ignore_dbus_inhibit = false;
+                lock_cmd = "hyprlock";
+            };
+
+            listener = [
+                {
+                    timeout = 900;
+                    on-timeout = "hyprlock";
+                }
+                {
+                    timeout = 1200;
+                    on-timeout = "hyprctl dispatch dpms off";
+                    on-resume = "hyprctl dispatch dpms on";
+                }
+            ];
+        };
+    }
+
     wayland.windowManager.hyprland = {
         enable = true;
         package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
         portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-        extraConfig = ''${builtins.readFile ./config/hyprland.conf}'';
+        extraConfig = ''${builtins.readFile ./config/hypr/hyprland.conf}'';
         plugins = [
             inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
         ];
