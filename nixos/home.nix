@@ -57,6 +57,7 @@
         XDG_TEMPLATES_DIR="$HOME/tmpl";
         XDG_VIDEOS_DIR="$HOME/vid";
         SSH_AUTH_SOCK="/run/user/1000/keyring/ssh";
+        SSH_AGENT_SOCK="/run/user/1000/keyring/ssh";
     };
 
     programs.kitty = with pkgs; {
