@@ -54,7 +54,11 @@
             extraSpecialArgs = { inherit inputs nix-colors nixvim; };
             modules = [
                 ./home.nix
+                ./nixpkgs.nix
             ];
         };
+
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
     };
 }

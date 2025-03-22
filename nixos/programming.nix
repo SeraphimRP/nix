@@ -25,5 +25,6 @@
         emmet-language-server
         docker-compose-language-service
         hyprls
+        jetbrains.rider
     ];
 }

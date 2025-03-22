@@ -5,7 +5,7 @@
         enable = true;
         settings = {
             default_session = {
-                command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd 'eval $(/run/wrappers/bin/gnome-keyring-daemon --start --daemonize); export SSH_AUTH_SOCK; Hyprland'";
+                command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
                 user = "greeter";
             };
         };
@@ -45,6 +45,7 @@
         vscode
         equibop
 	    cinny-desktop
-        telegram-desktop 
+        telegram-desktop
+        vscode.fhs
     ];
 }

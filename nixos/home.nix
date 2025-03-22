@@ -56,6 +56,7 @@
         XDG_PUBLICSHARE_DIR="$HOME/pub";
         XDG_TEMPLATES_DIR="$HOME/tmpl";
         XDG_VIDEOS_DIR="$HOME/vid";
+        SSH_AUTH_SOCK="/run/user/1000/keyring/ssh";
     };
 
     programs.kitty = with pkgs; {
@@ -285,6 +286,11 @@
                 }
             ];
         };
+    };
+
+    programs.vscode = {
+        enable = true;
+        package = pkgs.vscode.fhs;
     };
 
     wayland.windowManager.hyprland = {
