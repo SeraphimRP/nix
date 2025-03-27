@@ -7,8 +7,8 @@
         nodePackages.nodejs
         typescript
         pnpm
+        dotnetCorePackages.dotnet_9.sdk
         # see https://github.com/XNM1/linux-nixos-hyprland-config-dotfiles/blob/main/nixos/rust.nix for rust impl
-        dotnetCorePackages.sdk_9_0-bin
 
         # LSPs
         python313Packages.python-lsp-server

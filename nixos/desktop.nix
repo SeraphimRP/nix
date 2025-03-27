@@ -11,6 +11,8 @@
         };
     };
 
+    programs.noisetorch.enable = true;
+
     programs.hyprland = {
         enable = true;
         withUWSM = true;
@@ -38,6 +40,7 @@
         xdg-desktop-portal-gtk
         
         brave
+	thunderbird-latest
         zathura
         mpv
         imv
@@ -47,5 +50,6 @@
 	    cinny-desktop
         telegram-desktop
         vscode.fhs
+        grimblast
     ];
 }

@@ -44,6 +44,7 @@
                 ./users.nix
                 ./virtualisation.nix
                 ./programming.nix
+                #./programming-dotnet.nix
                 ./terminal.nix
                 ./misc-pkgs.nix
             ];

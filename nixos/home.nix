@@ -23,6 +23,7 @@
             grep = "rg";
             cat = "bat";
             ls = "eza";
+            ssh = "kitten ssh";
         };
     };
 
@@ -32,7 +33,12 @@
         enable = true;
 
         plugins.lualine.enable = true;
-        colorschemes.nord.enable = true;
+        colorschemes.catppuccin = {
+            enable = true;
+            settings = {
+                flavour = "macchiato";
+            };
+        };
     };
 
     programs.git = {
@@ -58,12 +64,16 @@
         XDG_VIDEOS_DIR="$HOME/vid";
         SSH_AUTH_SOCK="/run/user/1000/keyring/ssh";
         SSH_AGENT_SOCK="/run/user/1000/keyring/ssh";
+        XCURSOR_SIZE="30";
+        XCURSOR_THEME="Catppuccin Macchiato Mauve";
+        HYPRCURSOR_SIZE="30";
+        HYPRCURSOR_THEME="Catppuccin Macchiato Mauve";
     };
 
     programs.kitty = with pkgs; {
         enable = true;
         font.name = "JetBrainsMono Nerd Font";
-        themeFile = "Nord";
+        themeFile = "Catppuccin-Macchiato";
     };
 
     programs.starship.enable = true;
@@ -86,11 +96,18 @@
         ];
     };
 
+    gtk.iconTheme.package = pkgs.catppuccin-papirus-folders.override {
+        flavor = "macchiato";
+        accent = "mauve";
+    };
+
+    services.easyeffects.enable = true;
+
     services.dunst = {
         enable = true;
         settings = {
             global = {
-                frame_color = "#88C0D0";
+                frame_color = "#8aadf4";
                 separator_color = "frame";
                 font = "JetBrains Mono Regular 11";
                 corner_radius = 5;
@@ -103,24 +120,23 @@
                 height = "(0, 100)";
                 monitor = 1;
                 show_indicators = "no";
+                highlight = "#8aadf4";
             };
 
             urgency_low = {
-                background = "#2E3440";
-                foreground = "#ECEFF4";
-                frame_color = "#81A1C1";
+                background = "#24273a";
+                foreground = "#cad3f5";
             };
 
             urgency_normal = {
-                background = "#2E3440";
-                foreground = "#ECEFF4";
-                frame_color = "#88C0D0";
+                background = "#24273a";
+                foreground = "#cad3f5";
             };
 
             urgency_critical = {
-                background = "#2E3440";
-                foreground = "#ECEFF4";
-                frame_color = "#BF616A";
+                background = "#24273a";
+                foreground = "#cad3f5";
+                frame_color = "#f5a97f";
             };
         };
     };
@@ -256,8 +272,8 @@
             ipc = "on";
             splash = true;
 
-            preload = [ "$HOME/img/nixos.png" "$HOME/img/osf-024-static-wallpaper.png" ];
-            wallpaper = [ ", $HOME/img/nixos.png" ];
+            preload = [ "$HOME/img/nixos.png" "$HOME/img/osf-024-static-wallpaper.png" "$HOME/img/nix-black-4k.png" "$HOME/img/basement.jpg" ];
+            wallpaper = [ ", $HOME/img/basement.jpg" ];
         };
     };
 

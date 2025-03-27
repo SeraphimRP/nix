@@ -22,10 +22,6 @@
         psi-notify
         playerctl
         psmisc
-        grim
-        slurp
-        imagemagick
-        swappy
         ffmpeg_6-full
         wl-screenrec
         wl-clipboard
@@ -37,6 +33,5 @@
         rofi-wayland
         dunst
         wlogout
-        gifsicle
     ];
 }

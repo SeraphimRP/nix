@@ -1,5 +1,11 @@
 { inputs, pkgs, ... }:
 
+let
+    catppuccin = pkgs.catppuccin-gtk.override {
+        accents = [ "mauve" ];
+        variant = "macchiato";
+    };
+in
 {
     console = {
         font = "Lat2-Terminus16";
@@ -13,7 +19,7 @@
         noto-fonts
         nerd-fonts.jetbrains-mono
     ];
-    
+
     # lots to do here, compare to https://github.com/XNM1/linux-nixos-hyprland-config-dotfiles/blob/main/nixos/theme.nix
     environment.systemPackages = with pkgs; [
         papirus-nord
@@ -26,5 +32,9 @@
         nwg-look # we do all the configuration in here
         kitty-themes
         wallust
+        catppuccin-cursors.macchiatoMauve
+        catppuccinifier-gui
+        catppuccinifier-cli
+        catppuccin
     ];
 }

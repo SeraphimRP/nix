@@ -13,5 +13,6 @@
         wine
         mangohud
         protontricks
+        gamemode
     ];
 }
