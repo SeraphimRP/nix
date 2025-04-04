@@ -9,6 +9,10 @@
     # paths it should manage.
     home.username = "srp";
     home.homeDirectory = "/home/srp";
+    home.sessionPath = [
+	"$HOME/.local/bin"
+	"$HOME/.npm-packages/bin"
+    ];
 
     programs.zsh = {
         enable = true;
@@ -24,6 +28,12 @@
             cat = "bat";
             ls = "eza";
             ssh = "kitten ssh";
+	    yarn = "corepack yarn";
+	    yarnpkg = "corepack yarnpkg";
+	    pnpm = "corepack pnpm";
+	    pnpx = "corepack pnpx";
+	    npm = "corepack npm";
+	    npx = "corepack npx";
         };
     };
 
@@ -68,6 +78,7 @@
         XCURSOR_THEME="Catppuccin Macchiato Mauve";
         HYPRCURSOR_SIZE="30";
         HYPRCURSOR_THEME="Catppuccin Macchiato Mauve";
+	NODE_PATH="~/.npm-packages/lib/node_modules";
     };
 
     programs.kitty = with pkgs; {
@@ -272,8 +283,8 @@
             ipc = "on";
             splash = true;
 
-            preload = [ "$HOME/img/nixos.png" "$HOME/img/osf-024-static-wallpaper.png" "$HOME/img/nix-black-4k.png" "$HOME/img/basement.jpg" ];
-            wallpaper = [ ", $HOME/img/basement.jpg" ];
+            preload = [ "$HOME/img/nixos.png" "$HOME/img/osf-024-static-wallpaper.png" "$HOME/img/nix-black-4k.png" "$HOME/img/basement.jpg" "$HOME/img/02-monestary_catppuccin-macchiato.jpg" ];
+            wallpaper = [ ", $HOME/img/02-monestary_catppuccin-macchiato.jpg" ];
         };
     };
 

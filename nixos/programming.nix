@@ -26,5 +26,7 @@
         docker-compose-language-service
         hyprls
         jetbrains.rider
+        jetbrains.idea-community-bin
+        temurin-bin
     ];
 }

@@ -40,16 +40,18 @@
         xdg-desktop-portal-gtk
         
         brave
-	thunderbird-latest
+	    thunderbird-latest
         zathura
         mpv
         imv
         plexamp
+        plex-desktop
         vscode
         equibop
 	    cinny-desktop
         telegram-desktop
         vscode.fhs
         grimblast
+	pcmanfm
     ];
 }

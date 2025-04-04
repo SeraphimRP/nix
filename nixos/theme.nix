@@ -36,5 +36,6 @@ in
         catppuccinifier-gui
         catppuccinifier-cli
         catppuccin
+        lutgen
     ];
 }
