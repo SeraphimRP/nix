@@ -1,36 +1,36 @@
 { pkgs, nixvim, ... }:
 
 {
-    imports = [ nixvim.nixosModules.nixvim ];
+  imports = [ nixvim.nixosModules.nixvim ];
 
-    programs.nixvim.enable = true;
-    services.envfs.enable = true;
+  programs.nixvim.enable = true;
+  services.envfs.enable = true;
 
-    environment.systemPackages = with pkgs; [
-        kitty
-        starship
-        neofetch
-        htop
-        wlr-randr
-        gpu-viewer
-        dig
-        speedtest-rs
-        file
-        git
-        curl
-        ripgrep
-        eza
-        fd
-        jq
-        fzf
-        bat
-        pandoc
-        lsof
-        cmatrix
-        pipes-rs
-        rsclock
-        cava
-        figlet
-        nnn
-    ];
+  environment.systemPackages = with pkgs; [
+    kitty
+    starship
+    neofetch
+    htop
+    wlr-randr
+    gpu-viewer
+    dig
+    speedtest-rs
+    file
+    git
+    curl
+    ripgrep
+    eza
+    fd
+    jq
+    fzf
+    bat
+    pandoc
+    lsof
+    cmatrix
+    pipes-rs
+    rsclock
+    cava
+    figlet
+    nnn
+  ];
 }

@@ -1,9 +1,9 @@
 { pkgs, ... }:
 
 {
-    services.gvfs.enable = true;
+  services.gvfs.enable = true;
 
-    environment.systemPackages = with pkgs; [
-        usbutils
-    ];
+  environment.systemPackages = with pkgs; [
+    usbutils
+  ];
 }

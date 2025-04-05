@@ -1,8 +1,8 @@
 { ... }:
 
 {
-    time = {
-        hardwareClockInLocalTime = true;
-        timeZone = "America/Detroit";
-    };
+  time = {
+    hardwareClockInLocalTime = true;
+    timeZone = "America/Detroit";
+  };
 }
