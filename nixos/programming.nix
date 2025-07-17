@@ -41,5 +41,8 @@
     gtk3
     valkey
     hugo
+    blender
+    openscad
+    freecad
   ];
 }
