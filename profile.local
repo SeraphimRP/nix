@@ -12,10 +12,10 @@
 #done
 #export XDG_DATA_DIRS=$XDG_DATA_DIRS:$schemas
 
-sudo flatpak override --filesystem=xdg-data/themes
-sudo flatpak override --env=GTK_THEME="catppuccin-macchiato-mauve-standard+default"
-sudo flatpak override --env=CURSOR_THEME="catppuccin-macchiato-mauve-cursors"
-sudo flatpak override --env=ICON_THEME="Papirus-Dark"
+flatpak override --user --filesystem=xdg-data/themes
+flatpak override --user --env=GTK_THEME="catppuccin-macchiato-mauve-standard+default"
+flatpak override --user --env=CURSOR_THEME="catppuccin-macchiato-mauve-cursors"
+flatpak override --user --env=ICON_THEME="Papirus-Dark"
 
 for flatpak in $HOME/.var/app/*/
 do
