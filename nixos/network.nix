@@ -9,9 +9,9 @@
   networking.hostName = "nixos";
   networking.wireless = {
     enable = true;
-    networks.SSID_HERE = {
+    networks.Frodo = {
       authProtocols = [ "WPA-PSK" ];
-      pskRaw = "PSK_HERE";
+      pskRaw = "ce51bdc23dcfe6d01bbd2ffbb0d80079c4ce7cfa6c4cd8059690a12d002a305e";
     };
   };
 

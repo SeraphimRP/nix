@@ -16,5 +16,7 @@
   environment.systemPackages = with pkgs; [
     pamixer
     pavucontrol
+    alsa-scarlett-gui
+    scarlett2
   ];
 }

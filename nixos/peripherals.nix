@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   services.xserver = {
@@ -17,12 +17,15 @@
     motherboard = "amd";
   };
 
+  services.udisks2.enable = true;
+
   environment.systemPackages = with pkgs; [
     piper
     openrgb-with-all-plugins
     i2c-tools
     solaar
-    ntfs3g
     udiskie
+    android-tools
+    cameractrls-gtk4
   ];
 }

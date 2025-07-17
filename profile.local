@@ -1,0 +1,34 @@
+#!/bin/bash
+#schemas=""
+#for p in $NIX_PROFILES; do
+#  if [[ -d "$p" ]]; then
+#    for d in $(nix-store --query --references "$p"); do
+#      schemas_dir=$(echo "$d"/share/gsettings-schemas/*)
+#      if [[ -d "$schemas_dir/glib-2.0/schemas" ]]; then
+#        schemas="$schemas${schemas:+:}$schemas_dir"
+#      fi
+#    done
+#  fi
+#done
+#export XDG_DATA_DIRS=$XDG_DATA_DIRS:$schemas
+
+sudo flatpak override --filesystem=xdg-data/themes
+sudo flatpak override --env=GTK_THEME="catppuccin-macchiato-mauve-standard+default"
+sudo flatpak override --env=CURSOR_THEME="catppuccin-macchiato-mauve-cursors"
+sudo flatpak override --env=ICON_THEME="Papirus-Dark"
+
+for flatpak in $HOME/.var/app/*/
+do
+  confdir="${flatpak}config/gtk-3.0"
+
+  mkdir -p $confdir
+  cp $HOME/.config/gtk-3.0/settings.ini $confdir/settings.ini
+done
+
+for flatpak in $HOME/.var/app/*/
+do
+  confdir="${flatpak}config/gtk-4.0"
+
+  mkdir -p $confdir
+  cp $HOME/.config/gtk-4.0/settings.ini $confdir/settings.ini
+done

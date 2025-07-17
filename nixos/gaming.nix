@@ -2,9 +2,18 @@
 
 {
   programs.steam = {
+    package = pkgs.steam.override {
+      extraEnv = {
+        MANGOHUD = true;
+        TZ = "America/Detroit";
+      };
+    };
+
     enable = true;
     remotePlay.openFirewall = true;
     gamescopeSession.enable = true;
+
+    protontricks.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -22,5 +31,7 @@
     obs-studio-plugins.obs-text-pthread
     obs-studio-plugins.obs-pipewire-audio-capture
     vpkedit
+    bottles
+    prismlauncher
   ];
 }

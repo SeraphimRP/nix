@@ -32,5 +32,6 @@
     cava
     figlet
     nnn
+    nix-tree
   ];
 }

@@ -32,9 +32,14 @@
     emmet-language-server
     docker-compose-language-service
     hyprls
-    jetbrains.rider
-    jetbrains.idea-community-bin
+    (jetbrains.rider.override {
+      jdk = pkgs.jdk;
+    })
     temurin-bin
     nixfmt-rfc-style
+    clang
+    gtk3
+    valkey
+    hugo
   ];
 }

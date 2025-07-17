@@ -5,6 +5,7 @@
   nix-colors,
   nixvim,
   bsp-casefolding-workaround,
+  lib,
   ...
 }:
 
@@ -24,7 +25,12 @@
   home.sessionPath = [
     "$HOME/.local/bin"
     "$HOME/.npm-packages/bin"
+    "$HOME/.flutter/flutter/bin"
   ];
+
+  news.display = "silent";
+  news.json = lib.mkForce { };
+  news.entries = lib.mkForce [ ];
 
   programs.zsh = {
     enable = true;
@@ -63,6 +69,13 @@
     };
   };
 
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs-nox;
+  };
+
+  services.emacs.enable = true;
+
   programs.git = {
     enable = true;
     userEmail = "me@srp.life";
@@ -93,12 +106,14 @@
     HYPRCURSOR_SIZE = "30";
     HYPRCURSOR_THEME = "Catppuccin Macchiato Mauve";
     NODE_PATH = "~/.npm-packages/lib/node_modules";
+    CHROME_EXECUTABLE = "/run/current-system/sw/bin/brave";
   };
 
   programs.kitty = with pkgs; {
     enable = true;
     font.name = "JetBrainsMono Nerd Font";
     themeFile = "Catppuccin-Macchiato";
+    # extraConfig = "include themes/Phosphor_Dark_Amber.conf";
   };
 
   programs.starship.enable = true;
@@ -112,11 +127,23 @@
         id_uuid = "EA3850B038507D8F";
         ignore = false;
         automount = true;
+        options = [
+          "uid=1000"
+          "rw"
+          "exec"
+          "umask=000"
+        ];
       }
       {
         id_uuid = "72CC3D9BCC3D5B15";
         ignore = false;
         automount = true;
+        options = [
+          "uid=1000"
+          "rw"
+          "exec"
+          "umask=000"
+        ];
       }
     ];
   };
@@ -143,7 +170,7 @@
         frame_width = 2;
         width = "(0, 700)";
         height = "(0, 100)";
-        monitor = 1;
+        monitor = 0;
         show_indicators = "no";
         highlight = "#8aadf4";
       };

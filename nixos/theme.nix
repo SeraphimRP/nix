@@ -37,5 +37,6 @@ in
     catppuccinifier-cli
     catppuccin
     lutgen
+    base16-schemes
   ];
 }

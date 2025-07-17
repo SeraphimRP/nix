@@ -35,9 +35,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    bsp-casefolding-workaround = {
-      url = "github:SeraphimRP/bsp-casefolding-workaround-nix/stable";
-    };
+    bsp-casefolding-workaround.url = "github:SeraphimRP/bsp-casefolding-workaround-nix/stable";
   };
 
   outputs =

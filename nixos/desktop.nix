@@ -24,6 +24,14 @@
     AQ_NO_ATOMIC = "0";
   };
 
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/etc/nixos";
+  };
+
+  services.flatpak.enable = true;
   environment.systemPackages = with pkgs; [
     greetd.tuigreet
 
@@ -39,6 +47,7 @@
 
     xdg-desktop-portal-gtk
 
+    google-chrome
     brave
     thunderbird-latest
     zathura
@@ -47,11 +56,16 @@
     plexamp
     plex-desktop
     vscode
+    (discord-canary.override {
+      withVencord = true;
+      vencord = vencord;
+    })
     equibop
     cinny-desktop
     telegram-desktop
     vscode.fhs
     grimblast
-    pcmanfm
+    unzip
+    xfce.thunar
   ];
 }

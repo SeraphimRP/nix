@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [
     "splash"
     "quiet"
@@ -10,7 +10,6 @@
     "lsm=apparmor,tomoyo,selinux"
     "video4linux"
     "acpi_rev_override=5"
-    "security=selinux"
   ];
 
   systemd.package = pkgs.systemd.override { withSelinux = true; };
