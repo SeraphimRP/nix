@@ -5,18 +5,14 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     hyprland.url = "github:hyprwm/Hyprland";
-
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-
     hyprsplit = {
       url = "github:shezdy/hyprsplit";
       inputs.hyprland.follows = "hyprland";
     };
-
-    nix-colors.url = "github:misterio77/nix-colors";
 
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -42,7 +38,6 @@
     {
       nixpkgs,
       home-manager,
-      nix-colors,
       nixvim,
       lanzaboote,
       bsp-casefolding-workaround,
@@ -86,7 +81,6 @@
         extraSpecialArgs = {
           inherit
             inputs
-            nix-colors
             nixvim
             bsp-casefolding-workaround
             ;

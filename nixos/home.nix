@@ -2,7 +2,6 @@
   config,
   inputs,
   pkgs,
-  nix-colors,
   nixvim,
   bsp-casefolding-workaround,
   lib,
@@ -11,12 +10,9 @@
 
 {
   imports = [
-    nix-colors.homeManagerModules.default
     nixvim.homeManagerModules.nixvim
     bsp-casefolding-workaround.nixosModules.default
   ];
-
-  colorScheme = nix-colors.colorSchemes.nord;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -28,6 +24,7 @@
     "$HOME/.flutter/flutter/bin"
   ];
 
+  # this saves us from having to do `home-manager --flake <path> news`
   news.display = "silent";
   news.json = lib.mkForce { };
   news.entries = lib.mkForce [ ];
@@ -38,6 +35,32 @@
     syntaxHighlighting.enable = true;
     initContent = ''
       eval "$(starship init zsh)"
+    '';
+
+    # this serves to have flatpak use installed GTK/cursor/icon themes
+    # for themes, they MUST exist in $HOME/.local/share/themes
+    # for {icon,cursor}s, it seems to be satisfied with whatever's the standard setup
+    loginExtra = ''
+      flatpak override --user --filesystem=xdg-data/themes
+      flatpak override --user --env=GTK_THEME="catppuccin-macchiato-mauve-standard+default"
+      flatpak override --user --env=CURSOR_THEME="catppuccin-macchiato-mauve-cursors"
+      flatpak override --user --env=ICON_THEME="Papirus-Dark"
+
+      for flatpak in $HOME/.var/app/*/
+      do
+        confdir="''${flatpak}config/gtk-3.0"
+
+        mkdir -p $confdir
+        cp $HOME/.config/gtk-3.0/settings.ini $confdir/settings.ini
+      done
+
+      for flatpak in $HOME/.var/app/*/
+      do
+        confdir="''${flatpak}config/gtk-4.0"
+
+        mkdir -p $confdir
+        cp $HOME/.config/gtk-4.0/settings.ini $confdir/settings.ini
+      done
     '';
 
     shellAliases = {
