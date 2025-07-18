@@ -23,7 +23,11 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [
+    "kvm-amd"
+    "ip_tables"
+    "iptable_nat"
+  ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
