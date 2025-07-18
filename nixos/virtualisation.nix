@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, winapps, ... }:
 
 {
   virtualisation.podman = {
@@ -21,5 +21,7 @@
     podman-tui
 
     docker-compose
+    winapps.packages.x86_64-linux.winapps
+    winapps.packages.x86_64-linux.winapps-launcher
   ];
 }

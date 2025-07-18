@@ -31,6 +31,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    winapps = {
+      url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     bsp-casefolding-workaround.url = "github:SeraphimRP/bsp-casefolding-workaround-nix/stable";
   };
 
@@ -40,12 +45,20 @@
       home-manager,
       nixvim,
       lanzaboote,
+      winapps,
       bsp-casefolding-workaround,
       ...
     }@inputs:
     {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs nixvim lanzaboote; };
+        specialArgs = {
+          inherit
+            inputs
+            nixvim
+            lanzaboote
+            winapps
+            ;
+        };
         modules = [
           ./configuration.nix
           ./hardware-configuration.nix

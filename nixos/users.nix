@@ -13,6 +13,7 @@
       "video"
       "audio"
       "tss"
+      "kvm"
     ];
   };
 
