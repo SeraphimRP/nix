@@ -44,7 +44,7 @@
       flatpak override --user --filesystem=xdg-data/themes
       flatpak override --user --env=GTK_THEME="Gruvbox-Material-Dark-HIDPI"
       flatpak override --user --env=CURSOR_THEME="Capitaine Cursors (Gruvbox)"
-      flatpak override --user --env=ICON_THEME="Papirus-Dark"
+      flatpak override --user --env=ICON_THEME="Gruvbox-Plus-Dark"
 
       for flatpak in $HOME/.var/app/*/
       do
