@@ -42,8 +42,8 @@
     # for {icon,cursor}s, it seems to be satisfied with whatever's the standard setup
     loginExtra = ''
       flatpak override --user --filesystem=xdg-data/themes
-      flatpak override --user --env=GTK_THEME="catppuccin-macchiato-mauve-standard+default"
-      flatpak override --user --env=CURSOR_THEME="catppuccin-macchiato-mauve-cursors"
+      flatpak override --user --env=GTK_THEME="Gruvbox-Material-Dark-HIDPI"
+      flatpak override --user --env=CURSOR_THEME="Capitaine Cursors (Gruvbox)"
       flatpak override --user --env=ICON_THEME="Papirus-Dark"
 
       for flatpak in $HOME/.var/app/*/
@@ -135,7 +135,7 @@
   programs.kitty = with pkgs; {
     enable = true;
     font.name = "JetBrainsMono Nerd Font";
-    themeFile = "Gruvbox-Dark";
+    themeFile = "GruvboxMaterialDarkMedium";
     # extraConfig = "include themes/Phosphor_Dark_Amber.conf";
   };
 
@@ -368,8 +368,9 @@
         "$HOME/img/nix-black-4k.png"
         "$HOME/img/basement.jpg"
         "$HOME/img/02-monestary_catppuccin-macchiato.jpg"
+        "$HOME/img/gruvbox-nix.png"
       ];
-      wallpaper = [ ", $HOME/img/02-monestary_catppuccin-macchiato.jpg" ];
+      wallpaper = [ ", $HOME/img/gruvbox-nix.png" ];
     };
   };
 

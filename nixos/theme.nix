@@ -32,10 +32,9 @@ in
     nwg-look # we do all the configuration in here
     kitty-themes
     wallust
-    catppuccin-cursors.macchiatoMauve
-    catppuccinifier-gui
-    catppuccinifier-cli
-    catppuccin
+    gruvbox-material-gtk-theme
+    capitaine-cursors-themed
+    gruvbox-plus-icons
     lutgen
     base16-schemes
   ];
