@@ -22,6 +22,7 @@
     "$HOME/.local/bin"
     "$HOME/.npm-packages/bin"
     "$HOME/.flutter/flutter/bin"
+    "/usr/local/bin"
   ];
 
   # this saves us from having to do `home-manager --flake <path> news`
