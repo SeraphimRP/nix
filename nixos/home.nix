@@ -135,7 +135,7 @@
   programs.kitty = with pkgs; {
     enable = true;
     font.name = "JetBrainsMono Nerd Font";
-    themeFile = "Catppuccin-Macchiato";
+    themeFile = "Gruvbox-Dark";
     # extraConfig = "include themes/Phosphor_Dark_Amber.conf";
   };
 
