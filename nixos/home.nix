@@ -415,14 +415,14 @@
     portalPackage =
       inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     extraConfig = ''${builtins.readFile ./config/hypr/hyprland.conf}'';
-    plugins = with lib; [
+    plugins = [
       (inputs.hyprsplit.packages.${pkgs.system}.hyprsplit.overrideAttrs {
         version = "0.50.0";
         src = pkgs.fetchFromGitHub {
           owner = "SeraphimRP";
           repo = "hyprsplit";
           rev = "31a3d2af34150aa3b5e8957665c887d1d5023504";
-          hash = "sha256-hI59fDBb9qWj0geif35cRS7l/8EB4E7BloqLUIcTHrk="";
+          hash = "sha256-hI59fDBb9qWj0geif35cRS7l/8EB4E7BloqLUIcTHrk=";
         };
       })
     ];
