@@ -369,9 +369,10 @@
         "$HOME/img/nix-black-4k.png"
         "$HOME/img/basement.jpg"
         "$HOME/img/02-monestary_catppuccin-macchiato.jpg"
-        "$HOME/img/gruvbox-nix.png"
+        "$HOME/img/wallhaven-o31ppl_smoothed_gruvbox.png"
+        "$HOME/img/gruvbox-nix_smoothed_gruvbox.png"
       ];
-      wallpaper = [ ", $HOME/img/gruvbox-nix.png" ];
+      wallpaper = [ ", $HOME/img/gruvbox-nix_smoothed_gruvbox.png" ];
     };
   };
 
@@ -414,9 +415,25 @@
     portalPackage =
       inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     extraConfig = ''${builtins.readFile ./config/hypr/hyprland.conf}'';
-    plugins = [
-      inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
+    plugins = with lib; [
+      (inputs.hyprsplit.packages.${pkgs.system}.hyprsplit.overrideAttrs {
+        version = "0.50.0";
+        src = pkgs.fetchFromGitHub {
+          owner = "SeraphimRP";
+          repo = "hyprsplit";
+          rev = "31a3d2af34150aa3b5e8957665c887d1d5023504";
+          hash = "sha256-hI59fDBb9qWj0geif35cRS7l/8EB4E7BloqLUIcTHrk="";
+        };
+      })
     ];
+  };
+
+  programs.mangohud = {
+    enable = true;
+    settings = {
+      preset = 1;
+      position = "top-right";
+    };
   };
 
   # This value determines the Home Manager release that your
