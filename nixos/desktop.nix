@@ -53,7 +53,7 @@
 
     xdg-desktop-portal-gtk
 
-    google-chrome
+    librewolf
     brave
     thunderbird-latest
     zathura
