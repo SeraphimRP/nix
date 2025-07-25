@@ -73,5 +73,6 @@
     grimblast
     unzip
     xfce.thunar
+    shared-mime-info
   ];
 }
