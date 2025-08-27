@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -7,5 +7,6 @@
     (final: prev: {
       jdk8 = final.openjdk8-bootstrap;
     })
+    inputs.millennium.overlays.default
   ];
 }

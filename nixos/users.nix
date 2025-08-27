@@ -17,5 +17,7 @@
     ];
   };
 
-  services.logind.extraConfig = "RuntimeDirectorySize=8G";
+  services.logind.settings.Login = {
+    RuntimeDirectorySize = "8G";
+  };
 }

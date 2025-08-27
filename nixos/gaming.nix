@@ -2,7 +2,7 @@
 
 {
   programs.steam = {
-    package = pkgs.steam.override {
+    package = pkgs.steam-millennium.override {
       extraEnv = {
         MANGOHUD = true;
         TZ = "America/Detroit";

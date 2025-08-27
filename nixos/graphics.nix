@@ -12,6 +12,9 @@
       mesa
     ];
   };
+  hardware.amdgpu.opencl.enable = true;
+  hardware.amdgpu.amdvlk.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   boot.kernelParams = [
     "video=DP-2:2560x1440@144"

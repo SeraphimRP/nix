@@ -4,15 +4,15 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hyprsplit = {
-      url = "github:shezdy/hyprsplit";
-      inputs.hyprland.follows = "hyprland";
-    };
+    #hyprland.url = "github:hyprwm/Hyprland";
+    #hyprland-plugins = {
+    #  url = "github:hyprwm/hyprland-plugins";
+    #  inputs.hyprland.follows = "hyprland";
+    #};
+    #hyprsplit = {
+    #  url = "github:shezdy/hyprsplit";
+    #  inputs.hyprland.follows = "hyprland";
+    #};
 
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -34,6 +34,10 @@
     winapps = {
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    millennium = {
+      url = "git+https://github.com/SteamClientHomebrew/Millennium?ref=v2.28.0&rev=e837940723baec50ff969e5004b46a153ed63c5b";
     };
 
     bsp-casefolding-workaround.url = "github:SeraphimRP/bsp-casefolding-workaround-nix/stable";

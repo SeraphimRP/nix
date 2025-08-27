@@ -76,6 +76,7 @@
       pnpx = "corepack pnpx";
       npm = "corepack npm";
       npx = "corepack npx";
+      run-pkg = "nix-shell -p '(import<nixpkgs>{}).callPackage ./package.nix {}'";
     };
   };
 
@@ -85,11 +86,8 @@
     enable = true;
 
     plugins.lualine.enable = true;
-    colorschemes.catppuccin = {
+    colorschemes.gruvbox = {
       enable = true;
-      settings = {
-        flavour = "macchiato";
-      };
     };
   };
 
@@ -244,7 +242,6 @@
           "idle_inhibitor"
           "network"
           "pulseaudio"
-          "mpris"
           "tray"
           "custom/power"
         ];
@@ -287,11 +284,11 @@
 
         pulseaudio = {
           scroll-step = 1;
-          format = "{volume}% {icon} {format_source}";
-          format-bluetooth = "{volume}% {icon} {format_source}";
-          format-bluetooth-muted = " {icon} {format_source}";
-          format-muted = " {format_source}";
-          format-source = "{volume}% ";
+          format = "{icon} {volume}% {format_source}";
+          format-bluetooth = "{icon} {volume}% {format_source}";
+          format-bluetooth-muted = "{icon}  {format_source}";
+          format-muted = "{format_source} ";
+          format-source = " {volume}%";
           format-source-muted = "";
           format-icons = {
             headphone = "";
@@ -309,30 +306,30 @@
           on-click = "pavucontrol";
         };
 
-        mpris = {
-          format-playing = "{player_icon} Playing";
-          format-paused = "{player_icon} Paused";
-          format-stopped = "{player_icon}";
-          interval = 1;
-          #max-length = 40;
-          player-icons = {
-            spotify = "";
-            Plexamp = "󰚺";
-            default = "🎜";
-          };
-          status-icons = {
-            "paused" = "⏸";
-          };
-          #tooltip-with-markup = true;
-          #tooltip-format-playing = "<big>{artist}</big>\n{title}\n<small>{album}\n{position}/{length}</small>";
-          tooltip-format-playing = "{artist}\n\n{title}\n{album}\n\n{position}/{length}";
-          tooltip-format-paused = "{artist}\n\n{title}\n{album}\n\n{position}/{length}";
-          player = "Plexamp";
-          ignored-players = [
-            "firefox"
-            "brave"
-          ];
-        };
+        # mpris = {
+        #   format-playing = "{player_icon} Playing";
+        #   format-paused = "{player_icon} Paused";
+        #   format-stopped = "{player_icon}";
+        #   interval = 1;
+        #   #max-length = 40;
+        #   player-icons = {
+        #     spotify = "";
+        #     Plexamp = "󰚺";
+        #     default = "🎜";
+        #   };
+        #   status-icons = {
+        #     "paused" = "⏸";
+        #   };
+        #   #tooltip-with-markup = true;
+        #   #tooltip-format-playing = "<big>{artist}</big>\n{title}\n<small>{album}\n{position}/{length}</small>";
+        #   tooltip-format-playing = "{artist}\n\n{title}\n{album}\n\n{position}/{length}";
+        #   tooltip-format-paused = "{artist}\n\n{title}\n{album}\n\n{position}/{length}";
+        #   player = "Plexamp";
+        #   ignored-players = [
+        #     "firefox"
+        #     "brave"
+        #   ];
+        # };
 
         tray = {
           spacing = 5;
@@ -411,20 +408,20 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage =
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    package = pkgs.hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
     extraConfig = ''${builtins.readFile ./config/hypr/hyprland.conf}'';
     plugins = [
-      (inputs.hyprsplit.packages.${pkgs.system}.hyprsplit.overrideAttrs {
-        version = "0.50.0";
-        src = pkgs.fetchFromGitHub {
-          owner = "SeraphimRP";
-          repo = "hyprsplit";
-          rev = "31a3d2af34150aa3b5e8957665c887d1d5023504";
-          hash = "sha256-hI59fDBb9qWj0geif35cRS7l/8EB4E7BloqLUIcTHrk=";
-        };
-      })
+      pkgs.hyprlandPlugins.hyprsplit
+      #(inputs.hyprsplit.packages.${pkgs.system}.hyprsplit.overrideAttrs {
+      #  version = "0.50.0";
+      #  src = pkgs.fetchFromGitHub {
+      #    owner = "SeraphimRP";
+      #    repo = "hyprsplit";
+      #    rev = "31a3d2af34150aa3b5e8957665c887d1d5023504";
+      #    hash = "sha256-hI59fDBb9qWj0geif35cRS7l/8EB4E7BloqLUIcTHrk=";
+      #  };
+      #})
     ];
   };
 

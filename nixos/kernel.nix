@@ -1,7 +1,16 @@
 { pkgs, ... }:
 
 {
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackagesFor (
+    pkgs.linuxPackages_latest.kernel.override {
+      src = pkgs.fetchLocal {
+        path = "/linux.tar.xz";
+        sha256 = "";
+      };
+    }
+  );
+
   boot.kernelParams = [
     "splash"
     "quiet"

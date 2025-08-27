@@ -44,5 +44,8 @@
     blender
     openscad
     freecad
+    netcoredbg
+    bun
+    claude-code
   ];
 }
