@@ -62,8 +62,19 @@
     plexamp
     plex-desktop
     vscode
-    (discord-canary.override {
+    (discord.override {
       withEquicord = true;
+      equicord = (
+        equicord.overrideAttrs {
+          version = "2025-08-29";
+          src = fetchFromGitHub {
+            owner = "Equicord";
+            repo = "Equicord";
+            tag = "2025-08-29";
+            hash = "sha256-TVUUqqLeB1qNc7y7iMGmLdMe3YZWvOnGHfQPa+qA57Y=";
+          };
+        }
+      );
     })
     #cinny-desktop
     telegram-desktop

@@ -10,7 +10,7 @@
 
 {
   imports = [
-    nixvim.homeManagerModules.nixvim
+    nixvim.homeModules.nixvim
     bsp-casefolding-workaround.nixosModules.default
   ];
 
