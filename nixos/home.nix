@@ -181,7 +181,7 @@
     enable = true;
     settings = {
       global = {
-        frame_color = "#8aadf4";
+        frame_color = "#689d6a";
         separator_color = "frame";
         font = "JetBrains Mono Regular 11";
         corner_radius = 5;
@@ -194,23 +194,23 @@
         height = "(0, 100)";
         monitor = 0;
         show_indicators = "no";
-        highlight = "#8aadf4";
+        highlight = "#689d6a";
       };
 
       urgency_low = {
-        background = "#24273a";
-        foreground = "#cad3f5";
+        background = "#3c3836";
+        foreground = "#ebdbb2";
       };
 
       urgency_normal = {
-        background = "#24273a";
-        foreground = "#cad3f5";
+        background = "#3c3836";
+        foreground = "#ebdbb2";
       };
 
       urgency_critical = {
-        background = "#24273a";
-        foreground = "#cad3f5";
-        frame_color = "#f5a97f";
+        background = "#3c3836";
+        foreground = "#ebdbb2";
+        frame_color = "#fb4934";
       };
     };
   };

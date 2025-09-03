@@ -37,12 +37,13 @@
         var YES = polkit.Result.YES;
         var permission = {
           // required for udisks1:
-          "org.freedesktop.udisks.filesystem-mount": YES,
+          "org.freedesktop.udisks.filesystem-mount": polkit.Result.YES,
           "org.freedesktop.udisks.luks-unlock": YES,
           "org.freedesktop.udisks.drive-eject": YES,
           "org.freedesktop.udisks.drive-detach": YES,
           // required for udisks2:
           "org.freedesktop.udisks2.filesystem-mount": YES,
+          "org.freedesktop.udisks2.filesystem-mount-system": YES,
           "org.freedesktop.udisks2.encrypted-unlock": YES,
           "org.freedesktop.udisks2.eject-media": YES,
           "org.freedesktop.udisks2.power-off-drive": YES,

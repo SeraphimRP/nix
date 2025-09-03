@@ -14,6 +14,7 @@
       "audio"
       "tss"
       "kvm"
+      "disk"
     ];
   };
 

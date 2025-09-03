@@ -32,5 +32,6 @@
     cameractrls-gtk4
     qmk
     qmk-udev-rules
+    ntfs3g
   ];
 }
