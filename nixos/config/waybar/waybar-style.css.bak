@@ -1,10 +1,10 @@
 @define-color rosewater #ebdbb2;
 @define-color flamingo #d5c4a1;
 @define-color pink #fbf1c7;
-@define-color mauve #FF0000;
+@define-color mauve #689d6a;
 @define-color lavender #bdae93;
 @define-color text #ebdbb2;
-@define-color base #000000;
+@define-color base #3c3836;
 
 * {
     font-size:11px;
@@ -19,7 +19,7 @@ window#waybar{
     border-radius:0px;
     border: 2px solid @mauve;
     background: @base;
-    box-shadow: 0px 0px 0px 1px #0000ff;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
 }
 .modules-center {
     padding:5px;
@@ -27,7 +27,7 @@ window#waybar{
     border-radius:0px;
     border: 2px solid @mauve;
     background: @base;
-    box-shadow: 0px 0px 0px 1px #0000ff;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
 }
 .modules-right {
     padding:5px;
@@ -35,9 +35,8 @@ window#waybar{
     border-radius:0px;
     border: 2px solid @mauve;
     background: @base;
-    box-shadow: 0px 0px 0px 2px #0000ff;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
 }
-
 tooltip {
     background:@base;
     color: @rosewater;

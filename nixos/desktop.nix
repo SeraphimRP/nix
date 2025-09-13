@@ -88,5 +88,9 @@
     obsidian
     nextcloud-client
     texliveFull
+    libqalculate
+    inputs.noctalia.packages.${system}.default
+    inputs.quickshell.packages.${system}.default
+    matugen
   ];
 }

@@ -4,6 +4,7 @@
   pkgs,
   nixvim,
   bsp-casefolding-workaround,
+  vicinae,
   lib,
   ...
 }:
@@ -12,6 +13,7 @@
   imports = [
     nixvim.homeModules.nixvim
     bsp-casefolding-workaround.nixosModules.default
+    vicinae.homeManagerModules.default
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -86,17 +88,12 @@
     enable = true;
 
     plugins.lualine.enable = true;
-    colorschemes.gruvbox = {
-      enable = true;
-    };
   };
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs-nox;
+    package = pkgs.emacs-pgtk;
   };
-
-  services.emacs.enable = true;
 
   programs.git = {
     enable = true;
@@ -133,9 +130,11 @@
 
   programs.kitty = with pkgs; {
     enable = true;
-    font.name = "JetBrainsMono Nerd Font";
-    themeFile = "GruvboxMaterialDarkMedium";
+    #font.name = "JetBrainsMono Nerd Font";
+    font.name = "FiraCodeNF-Reg";
+    #themeFile = "noctalia";
     # extraConfig = "include themes/Phosphor_Dark_Amber.conf";
+    extraConfig = "include themes/noctalia.conf";
   };
 
   programs.starship.enable = true;
@@ -170,15 +169,15 @@
     ];
   };
 
-  gtk.iconTheme.package = pkgs.catppuccin-papirus-folders.override {
-    flavor = "macchiato";
-    accent = "mauve";
-  };
+  # gtk.iconTheme.package = pkgs.catppuccin-papirus-folders.override {
+  #   flavor = "macchiato";
+  #   accent = "mauve";
+  # };
 
   services.easyeffects.enable = true;
 
   services.dunst = {
-    enable = true;
+    enable = false;
     settings = {
       global = {
         frame_color = "#689d6a";
@@ -192,7 +191,7 @@
         frame_width = 2;
         width = "(0, 700)";
         height = "(0, 100)";
-        monitor = 0;
+        monitor = 1;
         show_indicators = "no";
         highlight = "#689d6a";
       };
@@ -224,7 +223,7 @@
   };
 
   programs.waybar = {
-    enable = true;
+    enable = false;
     style = ./config/waybar/waybar-style.css;
     settings = {
       mainBar = {
@@ -355,10 +354,10 @@
   services.playerctld.enable = true;
 
   services.hyprpaper = {
-    enable = true;
+    enable = false;
     settings = {
       ipc = "on";
-      splash = true;
+      splash = false;
 
       preload = [
         "$HOME/img/nixos.png"
@@ -368,13 +367,16 @@
         "$HOME/img/02-monestary_catppuccin-macchiato.jpg"
         "$HOME/img/wallhaven-o31ppl_smoothed_gruvbox.png"
         "$HOME/img/gruvbox-nix_smoothed_gruvbox.png"
+        "$HOME/img/lsystem1.png"
+        "$HOME/img/math.png"
+        "$HOME/img/chromostereopsis.png"
       ];
-      wallpaper = [ ", $HOME/img/gruvbox-nix_smoothed_gruvbox.png" ];
+      wallpaper = [ ", $HOME/img/chromostereopsis.png" ];
     };
   };
 
   programs.hyprlock = {
-    enable = true;
+    enable = false;
     extraConfig = ''${builtins.readFile ./config/hypr/hyprlock.conf}'';
   };
 
@@ -384,13 +386,13 @@
       general = {
         after_sleep_cmd = "hyprctl dispatch dpms on";
         ignore_dbus_inhibit = false;
-        lock_cmd = "hyprlock";
+        lock_cmd = "noctalia-shell ipc call lockScreen toggle";
       };
 
       listener = [
         {
           timeout = 900;
-          on-timeout = "hyprlock";
+          on-timeout = "noctalia-shell ipc call lockScreen toggle";
         }
         {
           timeout = 1200;
@@ -412,16 +414,16 @@
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
     extraConfig = ''${builtins.readFile ./config/hypr/hyprland.conf}'';
     plugins = [
-      pkgs.hyprlandPlugins.hyprsplit
-      #(inputs.hyprsplit.packages.${pkgs.system}.hyprsplit.overrideAttrs {
-      #  version = "0.50.0";
-      #  src = pkgs.fetchFromGitHub {
-      #    owner = "SeraphimRP";
-      #    repo = "hyprsplit";
-      #    rev = "31a3d2af34150aa3b5e8957665c887d1d5023504";
-      #    hash = "sha256-hI59fDBb9qWj0geif35cRS7l/8EB4E7BloqLUIcTHrk=";
-      #  };
-      #})
+      #pkgs.hyprlandPlugins.hyprsplit
+      (pkgs.hyprlandPlugins.hyprsplit.overrideAttrs {
+        version = "0.51.0";
+        src = pkgs.fetchFromGitHub {
+          owner = "shezdy";
+          repo = "hyprsplit";
+          tag = "v0.51.0";
+          hash = "sha256-h6vDtBKTfyuA/6frSFcTrdjoAKhwlGBT+nzjoWf9sQE=";
+        };
+      })
     ];
   };
 
@@ -431,6 +433,11 @@
       preset = 1;
       position = "top-right";
     };
+  };
+
+  services.vicinae = {
+    enable = true; # default: false
+    autoStart = true; # default: true
   };
 
   # This value determines the Home Manager release that your

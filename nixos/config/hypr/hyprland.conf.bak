@@ -1,4 +1,4 @@
-source = /home/srp/.config/hypr/colors.conf
+
 ################
 ### MONITORS ###
 ################
@@ -55,8 +55,8 @@ general {
     border_size = 2
 
     # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-    col.active_border = $primary
-    col.inactive_border = $on_primary
+    col.active_border = rgba(689d6aee) rgba(8ec07cee) 45deg
+    col.inactive_border = rgba(665c54aa)
 
     # Set to true enable resizing windows by clicking and dragging on borders and gaps
     resize_on_border = false
@@ -77,9 +77,9 @@ decoration {
 
     shadow {
         enabled = true
-        range = 5
-        render_power = 1
-        color = $surface
+        range = 4
+        render_power = 3
+        color = rgba(1a1a1aff)
     }
 
     # https://wiki.hyprland.org/Configuring/Variables/#blur
@@ -190,13 +190,7 @@ bind = $mainMod, V, togglefloating,
 bind = $mainMod, space, exec, $menu
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, J, togglesplit, # dwindle
-bind = $mainMod, L, exec, noctalia-shell ipc call lockScreen toggle
-bindel = , XF86AudioRaiseVolume, exec, noctalia-shell ipc call volume increase
-bindel = , XF86AudioLowerVolume, exec, noctalia-shell ipc call volume decrease
-bindel = , XF86AudioMute, exec, noctalia-shell ipc call volume muteOutput
-bindel = , XF86AudioMicMute, exec, noctalia-shell ipc call volume muteInput
-bindel = , XF86MonBrightnessDown, exec, noctalia-shell ipc call brightness decrease
-bindel = , XF86MonBrightnessUp, exec, noctalia-shell ipc call brightness increase
+bind = $mainMod, L, exec, hyprlock
 
 # Move focus with mainMod + arrow keys
 bind = $mainMod, left, movefocus, l
@@ -243,12 +237,12 @@ bindm = $mainMod, mouse:272, movewindow
 bindm = $mainMod, mouse:273, resizewindow
 
 # Laptop multimedia keys for volume and LCD brightness
-# bindel = ,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-# bindel = ,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-# bindel = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-# bindel = ,XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
-# bindel = ,XF86MonBrightnessUp, exec, brightnessctl s 10%+
-# bindel = ,XF86MonBrightnessDown, exec, brightnessctl s 10%-
+bindel = ,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindel = ,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindel = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindel = ,XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+bindel = ,XF86MonBrightnessUp, exec, brightnessctl s 10%+
+bindel = ,XF86MonBrightnessDown, exec, brightnessctl s 10%-
 
 # Requires playerctl
 bindl = , XF86AudioNext, exec, playerctl -p Plexamp next

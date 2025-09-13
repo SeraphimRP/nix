@@ -4,22 +4,20 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-    #hyprland.url = "github:hyprwm/Hyprland";
-    #hyprland-plugins = {
-    #  url = "github:hyprwm/hyprland-plugins";
-    #  inputs.hyprland.follows = "hyprland";
-    #};
-    #hyprsplit = {
-    #  url = "github:shezdy/hyprsplit";
-    #  inputs.hyprland.follows = "hyprland";
-    #};
+    # hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland-plugins = {
+    #   url = "github:hyprwm/hyprland-plugins";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
+    # hyprsplit = {
+    #   url = "github:shezdy/hyprsplit";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
 
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    mcmojave-hyprcursor.url = "github:libadoxon/mcmojave-hyprcursor";
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
@@ -36,11 +34,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    millennium = {
-      url = "git+https://github.com/SteamClientHomebrew/Millennium?ref=v2.28.0&rev=e837940723baec50ff969e5004b46a153ed63c5b";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    quickshell = {
+      url = "github:outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.quickshell.follows = "quickshell";
+    };
+
+    millennium.url = "git+https://github.com/SteamClientHomebrew/Millennium?ref=v2.28.0&rev=e837940723baec50ff969e5004b46a153ed63c5b";
     bsp-casefolding-workaround.url = "github:SeraphimRP/bsp-casefolding-workaround-nix/stable";
+    vicinae.url = "github:vicinaehq/vicinae/v0.8.5";
   };
 
   outputs =
@@ -51,6 +58,9 @@
       lanzaboote,
       winapps,
       bsp-casefolding-workaround,
+      vicinae,
+      noctalia,
+      quickshell,
       ...
     }@inputs:
     {
@@ -61,6 +71,8 @@
             nixvim
             lanzaboote
             winapps
+            noctalia
+            quickshell
             ;
         };
         modules = [
@@ -100,6 +112,7 @@
             inputs
             nixvim
             bsp-casefolding-workaround
+            vicinae
             ;
         };
         modules = [

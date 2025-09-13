@@ -18,6 +18,7 @@ in
     lora
     noto-fonts
     nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
   ];
 
   # lots to do here, compare to https://github.com/XNM1/linux-nixos-hyprland-config-dotfiles/blob/main/nixos/theme.nix
@@ -26,7 +27,6 @@ in
     nordzy-icon-theme
     nordzy-cursor-theme
     nordic
-    inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
     glib
     gsettings-desktop-schemas
     nwg-look # we do all the configuration in here
@@ -37,5 +37,6 @@ in
     gruvbox-plus-icons
     lutgen
     base16-schemes
+    pywalfox-native
   ];
 }

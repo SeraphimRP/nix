@@ -1,29 +1,29 @@
 { pkgs, ... }:
 
 {
-  #boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages =
-    let
-      linux_mtp_pkg =
-        { fetchurl, buildLinux, ... }@args:
-        buildLinux (
-          args
-          // rec {
-            version = "6.16.3-mtp";
-            modDirVersion = "6.16.3";
-            src = fetchurl {
-              url = "https://dump.hl.srp.life/linux.tar.gz";
-              hash = "sha256-qt2T0ISH6BFET79eb2pBJHdMvwmtpBsquwT3L+tPClA=";
-            };
-            kernelPatches = [ ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages =
+  #   let
+  #     linux_mtp_pkg =
+  #       { fetchurl, buildLinux, ... }@args:
+  #       buildLinux (
+  #         args
+  #         // rec {
+  #           version = "6.16.3-mtp";
+  #           modDirVersion = "6.16.3";
+  #           src = fetchurl {
+  #             url = "https://dump.hl.srp.life/linux.tar.gz";
+  #             hash = "sha256-qt2T0ISH6BFET79eb2pBJHdMvwmtpBsquwT3L+tPClA=";
+  #           };
+  #           kernelPatches = [ ];
 
-            extraMeta.branch = "6.16";
-          }
-          // (args.argsOverride or { })
-        );
-      linux_mtp = pkgs.callPackage linux_mtp_pkg { };
-    in
-    pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_mtp);
+  #           extraMeta.branch = "6.16";
+  #         }
+  #         // (args.argsOverride or { })
+  #       );
+  #     linux_mtp = pkgs.callPackage linux_mtp_pkg { };
+  #   in
+  #   pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_mtp);
   boot.kernelParams = [
     "splash"
     "quiet"

@@ -3,7 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     go
-    (python313Full.withPackages (
+    (python313.withPackages (
       ps: with ps; [
         pygobject3
         gobject-introspection

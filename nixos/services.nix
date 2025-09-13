@@ -30,8 +30,6 @@
     wtype
     wlrctl
     waybar
-    rofi-wayland
-    dunst
     wlogout
   ];
 }
